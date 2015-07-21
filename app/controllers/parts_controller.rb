@@ -6,9 +6,11 @@ class PartsController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
+    @order = Order.find(params[:order_id])
     @part = Part.new
   end
 
@@ -16,12 +18,13 @@ class PartsController < ApplicationController
   end
 
   def create
-    @part = Part.new(part_params)
+    @order = Order.find(params[:order_id])
+    @part = @order.parts.new(part_params)
 
     respond_to do |format|
       if @part.save
-        format.html { redirect_to @part, notice: 'Part was successfully created.' }
-        format.json { render :show, status: :created, location: @part }
+        format.html { redirect_to @order, notice: 'Part was successfully created.' }
+        format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
         format.json { render json: @part.errors, status: :unprocessable_entity }
@@ -55,6 +58,6 @@ class PartsController < ApplicationController
     end
 
     def part_params
-      params[:part]
+      params.require(:part).permit(:part_number, :description, :quantity, :order_id)
     end
 end

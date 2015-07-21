@@ -1,4 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<ul>
+    <li>Customer: <%= @order.customer %>, <%= @order.region %></li>
+    <li>Order number: <%= @order.order_number %></li>
+    <li>Printer: <%= @order.quantity %> x <%= @order.printer %></li>
+    <li>Order date: <%= @order.order_date %></li>
+    <li>Due date: <%= @order.due_date %></li>
+</ul>
+
+<h3>Parts needed for completion</h3>
+
+<%= link_to 'Add a new part', new_order_part_path(@order), class: "btn btn-primary" %>
+
+<table class = "table">
+    <tr>
+        <th>Part number</th>
+        <th>Description</th>
+        <th>Quantity</th>
+    </tr>
+    
+    <% @order.parts.each do |f| %>
+    
+    <tr>
+        <td><%= f.part_number %></td>
+        <td><%= f.description %></td>
+        <td><%= f.quantity %></td>
+    </tr>
+</table>
+
+<% end %>
+

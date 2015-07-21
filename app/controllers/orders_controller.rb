@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -55,6 +56,6 @@ class OrdersController < ApplicationController
     end
     
     def order_params
-      params[:order]
+      params.require(:order).permit(:customer, :order_number, :order_date, :due_date, :region, :printer, :quantity)
     end
 end

@@ -10,6 +10,31 @@
       </ul>
     </div>
   <% end %>
+  
+  <div>
+    
+    <%= f.label :order_number %>
+    <%= f.text_field :order_number %></br>
+    
+    <%= f.label :customer %>
+    <%= f.text_field :customer %></br>
+    
+    <%= f.label :region %>
+    <%= f.text_field :region %></br>
+    
+    <%= f.label :printer %>
+    <%= f.text_field :printer %></br>
+    
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %></br>
+    
+    <%= f.label :order_date %>
+    <%= f.text_field :order_date %></br>
+    
+    <%= f.label :due_date %>
+    <%= f.text_field :due_date %></br>
+    
+  </div>
 
   <div class="actions">
     <%= f.submit %>
