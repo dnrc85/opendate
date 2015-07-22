@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<ul>
-    <li>Customer: <%= @order.customer %>, <%= @order.region %></li>
-    <li>Order number: <%= @order.order_number %></li>
-    <li>Printer: <%= @order.quantity %> x <%= @order.printer %></li>
-    <li>Order date: <%= @order.order_date %></li>
-    <li>Due date: <%= @order.due_date %></li>
+<h3>Order details</h3>
+
+<ul class = "list-group">
+    <li><strong>Customer:</strong>           <%= @order.customer %>, <%= @order.region %></li>
+    <li><strong>Order number:</strong>       <%= @order.order_number %></li>
+    <li><strong>Printer:</strong>            <%= @order.quantity %> x <%= @order.printer %></li>
+    <li><strong>Order date:</strong>         <%= @order.order_date %></li>
+    <li><strong>Due date:</strong>           <%= @order.due_date %></li>
 </ul>
 
 <h3>Parts needed for completion</h3>
@@ -26,7 +28,7 @@
         <td><%= f.description %></td>
         <td><%= f.quantity %></td>
     </tr>
+    
+    <% end %>
+    
 </table>
-
-<% end %>
-

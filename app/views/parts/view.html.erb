@@ -1,0 +1,22 @@
+<h3>All outstanding parts</h3>
+
+<table class = "table">
+    <tr>
+        <th>Part number</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th></th>
+    </tr>
+
+
+<% @parts.each do |f| %>
+
+    <tr>    
+        <td><%= f.part_number %></td>
+        <td><%= f.description %></td>
+        <td><%= f.quantity %></td>
+    </tr>
+    
+<% end %>
+
+</table>

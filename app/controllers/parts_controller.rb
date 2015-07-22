@@ -47,9 +47,13 @@ class PartsController < ApplicationController
   def destroy
     @part.destroy
     respond_to do |format|
-      format.html { redirect_to parts_url, notice: 'Part was successfully destroyed.' }
+      format.html { redirect_to parts_all, notice: 'Part was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def view
+    @parts = Part.all.reorder(:part_number)
   end
 
   private
