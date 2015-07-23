@@ -23,7 +23,7 @@
     <%= f.text_field :region %></br>
     
     <%= f.label :printer %>
-    <%= f.text_field :printer %></br>
+    <%= f.select :printer, Printer.all.map { |f| f.name } %></br>
     
     <%= f.label :quantity %>
     <%= f.text_field :quantity %></br>
