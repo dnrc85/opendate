@@ -1,0 +1,9 @@
+<h2>USA orders outstanding</h2>
+
+<% @order.where('region = USA').each do |order| %>
+
+<%= order.order_number %>
+<%= order.printer %>
+<%= order.quantity %>
+
+<% end %>
