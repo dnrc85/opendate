@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# thermal
 
 t53s_printer = Printer.where(name: '53S').first_or_create(name: '53S')
 t53m_printer = Printer.where(name: '53M').first_or_create(name: '53M')
@@ -20,3 +14,20 @@ t107l_printer = Printer.where(name: '107L').first_or_create(name: '107L')
 
 t107cr_printer = Printer.where(name: '107CR').first_or_create(name: '107CR')
 t107cl_printer = Printer.where(name: '107CL').first_or_create(name: '107CL')
+
+# hot foil
+
+ec150_printer = Printer.where(name: 'Eurocode 150').first_or_create(name: 'Eurocode 150')
+ec180_printer = Printer.where(name: 'Eurocode 180').first_or_create(name: 'Eurocode 180')
+ec300_printer = Printer.where(name: 'Eurocode 300').first_or_create(name: 'Eurocode 300')
+
+pm_printer = Printer.where(name: 'Printmaster').first_or_create(name: 'Printmaster')
+pmplus_printer = Printer.where(name: 'Printmaster Plus').first_or_create(name: 'Printmaster Plus')
+pm1000_printer = Printer.where(name: 'Printmaster 1000').first_or_create(name: 'Printmaster 1000')
+
+ecoder_printer = Printer.where(name: 'E-Coder').first_or_create(name: 'E-Coder')
+
+# Debosser
+
+hotdebosser_printer = Printer.where(name: 'Hot Debosser').first_or_create(name: 'Hot Debosser')
+colddebosser_printer = Printer.where(name: 'Cold Debosser').first_or_create(name: 'Cold Debosser')
