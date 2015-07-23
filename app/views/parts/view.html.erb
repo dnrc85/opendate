@@ -9,12 +9,13 @@
     </tr>
 
 
-<% @parts.each do |f| %>
+<% @parts.each do |part| %>
 
     <tr>    
-        <td><%= f.part_number %></td>
-        <td><%= f.description %></td>
-        <td><%= f.quantity %></td>
+        <td><%= part.part_number %></td>
+        <td><%= part.description %></td>
+        <td><%= part.quantity %></td>
+        <td><%= link_to 'Remove from list', part_path(part), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     
 <% end %>
