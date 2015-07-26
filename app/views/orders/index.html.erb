@@ -12,9 +12,11 @@
       <th>Region</th>
       <th>Printer</th>
       <th>Quantity</th>
+      <th>Status</th>
       <th>Order Date</th>
       <th>Due Date</th>
       <th>Parts Remaining</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -27,9 +29,11 @@
         <td><%= order.region %></td>
         <td><%= order.printer %></td>
         <td><%= order.quantity %></td>
+        <td><%= order.status %></td>
         <td><%= order.order_date %></td>
         <td><%= order.due_date %></td>
         <td><%= order.parts.count %></td>
+        <td><%= link_to 'Edit order', edit_order_path(order) %></td>
         <td><%= link_to 'Mark complete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

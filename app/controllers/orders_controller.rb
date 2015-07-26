@@ -56,6 +56,6 @@ class OrdersController < ApplicationController
     end
     
     def order_params
-      params.require(:order).permit(:customer, :order_number, :order_date, :due_date, :region, :printer, :quantity)
+      params.require(:order).permit(:customer, :order_number, :order_date, :due_date, :region, :printer, :quantity, :status, :notes)
     end
 end
