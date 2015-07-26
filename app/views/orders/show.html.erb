@@ -19,6 +19,7 @@
         <th>Part number</th>
         <th>Description</th>
         <th>Quantity</th>
+        <th>Supplier</th>
     </tr>
     
     <% @order.parts.each do |f| %>
@@ -27,6 +28,7 @@
         <td><%= f.part_number %></td>
         <td><%= f.description %></td>
         <td><%= f.quantity %></td>
+        <td><%= f.supplier %></td>
     </tr>
     
     <% end %>

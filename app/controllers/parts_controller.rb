@@ -53,7 +53,7 @@ class PartsController < ApplicationController
   end
   
   def view
-    @parts = Part.all.reorder(:part_number)
+    @parts = Part.all.reorder(:supplier, :part_number)
   end
 
   private
@@ -62,6 +62,6 @@ class PartsController < ApplicationController
     end
 
     def part_params
-      params.require(:part).permit(:part_number, :description, :quantity, :order_id)
+      params.require(:part).permit(:part_number, :description, :quantity, :order_id, :supplier)
     end
 end

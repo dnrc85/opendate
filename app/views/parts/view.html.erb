@@ -1,22 +1,28 @@
 <h3>All outstanding parts</h3>
 
 <table class = "table">
-    <tr>
-        <th>Part number</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
+            <th>Part number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
+            <th></th>
+        </tr>
+    </thead>
 
-
-<% @parts.each do |part| %>
-
-    <tr>    
-        <td><%= part.part_number %></td>
-        <td><%= part.description %></td>
-        <td><%= part.quantity %></td>
-        <td><%= link_to 'Remove from list', part_path(part), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    
+    <tbody>
+        <% @parts.each do |part| %>
+        
+        <tr>    
+            <td><%= part.part_number %></td>
+            <td><%= part.description %></td>
+            <td><%= part.quantity %></td>
+            <td><%= part.supplier %></td>
+            <td><%= link_to 'Remove from list', part_path(part), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    </tbody>
     
 <% end %>
 

@@ -30,14 +30,16 @@
     <%= f.text_field :quantity %></br>
     
     <%= f.label :order_date %></br>
-    <%= f.date_field(:order_date) %></br>
+    <%= f.text_field :order_date, placeholder: 'dd/mm/yy' %></br>
     
     <%= f.label :due_date %></br>
-    <%= f.date_field(:due_date) %></br>
+    <%= f.text_field :due_date, placeholder: 'dd/mm/yy' %></br>
+    
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
     
   </div>
 
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
+
 <% end %>
