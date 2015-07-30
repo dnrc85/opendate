@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Loans outstanding</h2>
+
+<%= link_to 'New loan entry', new_loan_path, class: "btn btn-primary" %></br>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Printer</th>
+      <th>Serial number</th>
+      <th>Shipped date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loans.each do |loan| %>
+      <tr>
+        <td><%= loan.customer %></td>
+        <td><%= loan.printer %></td>
+        <td><%= loan.serial_number %></td>
+        <td><%= loan.shipped_date %></td>
+        <td><%= link_to 'Edit loan details', edit_loan_path(loan) %></td>
+        <td><%= link_to 'Printer returned', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150726113205) do
+ActiveRecord::Schema.define(version: 20150730192243) do
+
+  create_table "loans", force: :cascade do |t|
+    t.string   "customer"
+    t.string   "printer"
+    t.string   "serial_number"
+    t.string   "shipped_date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer  "order_number"
