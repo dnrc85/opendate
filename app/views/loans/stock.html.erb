@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Loan machines in stock</h2>
+
+<%= link_to 'New stock loan machine entry', new_loan_path, class: "btn btn-primary" %></br>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Printer</th>
+      <th>Serial number</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loans.where(:shipped_date => "").each do |loan| %>
+        <tr>
+          <td><%= loan.printer %></td>
+          <td><%= loan.serial_number %></td>
+          <td><%= link_to 'Edit loan details', edit_loan_path(loan) %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

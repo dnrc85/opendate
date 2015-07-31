@@ -48,6 +48,10 @@ class LoansController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def stock
+    @loans = Loan.all
+  end
 
   private
     def set_loan

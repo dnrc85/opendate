@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  
+  get 'loans/stock' => 'loans#stock'
   resources :loans
   get 'parts/all' => 'parts#view', :as => :parts_all
+  
   resources :orders do
     resources :parts
   end
+  
   resources :parts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
