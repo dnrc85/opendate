@@ -26,7 +26,6 @@
             <td><%= loan.serial_number %></td>
             <td><%= loan.shipped_date %></td>
             <td><%= link_to 'Edit loan details', edit_loan_path(loan) %></td>
-            <td><%= link_to 'Printer returned', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       <% end %>

@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all
+    @orders = Order.all.reorder(:printer)
   end
 
   def show
@@ -48,6 +48,26 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def regionexport
+    @orders = Order.where(:region => "Export")
+  end
+  
+  def regionuk
+    @orders = Order.where(:region => "UK")
+  end
+  
+  def regionusa
+    @orders = Order.where(:region => "USA")
+  end
+  
+  def regionfrance
+    @orders = Order.where(:region => "France")
+  end
+  
+  def regiongermany
+    @orders = Order.where(:region => "Germany")
   end
 
   private

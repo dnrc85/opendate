@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
   
   get 'loans/stock' => 'loans#stock'
+  
   resources :loans
+  
   get 'parts/all' => 'parts#view', :as => :parts_all
+  
+  get 'orders/usa' => 'orders#regionusa'
+  
+  get 'orders/france' => 'orders#regionfrance'
+  
+  get 'orders/uk' => 'orders#regionuk'
+  
+  get 'orders/export' => 'orders#regionexport'
+  
+  get 'orders/germany' => 'orders#regiongermany'
   
   resources :orders do
     resources :parts
@@ -13,7 +25,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'orders#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

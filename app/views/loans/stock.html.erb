@@ -10,6 +10,7 @@
       <th>Printer</th>
       <th>Serial number</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -19,6 +20,7 @@
           <td><%= loan.printer %></td>
           <td><%= loan.serial_number %></td>
           <td><%= link_to 'Edit loan details', edit_loan_path(loan) %></td>
+          <td><%= link_to 'Delete', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
   </tbody>
