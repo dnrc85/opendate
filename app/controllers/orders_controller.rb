@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all.reorder(:printer)
+    @orders = Order.all.reorder(:printer, :due_date)
   end
 
   def show
