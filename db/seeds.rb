@@ -15,6 +15,8 @@ t107l_printer = Printer.where(name: '107L').first_or_create(name: '107L')
 t107cr_printer = Printer.where(name: '107CR').first_or_create(name: '107CR')
 t107cl_printer = Printer.where(name: '107CL').first_or_create(name: '107CL')
 
+iq_printer = Printer.where(name: 'iQ').first_or_create(name: 'iQ')
+
 # Hot foil
 
 ec150_printer = Printer.where(name: 'Eurocode 150').first_or_create(name: 'Eurocode 150')
@@ -27,10 +29,17 @@ pm1000_printer = Printer.where(name: 'Printmaster 1000').first_or_create(name: '
 
 ecoder_printer = Printer.where(name: 'E-Coder').first_or_create(name: 'E-Coder')
 
+sprintmajor_printer = Printer.where(name: 'Sprint Major').first_or_create(name: 'Sprint Major')
+sprint_printer = Printer.where(name: 'Sprint').first_or_create(name: 'Sprint')
+
 # Debosser
 
 hotdebosser_printer = Printer.where(name: 'Hot Debosser').first_or_create(name: 'Hot Debosser')
 colddebosser_printer = Printer.where(name: 'Cold Debosser').first_or_create(name: 'Cold Debosser')
+
+# Carton feeder
+
+mc810_printer = Printer.where(name: 'MC-810 Carton Feeder').first_or_create(name: 'MC-810 Carton Feeder')
 
 # Regions
 
