@@ -6,15 +6,7 @@ Rails.application.routes.draw do
   
   get 'parts/all' => 'parts#view', :as => :parts_all
   
-  get 'orders/usa' => 'orders#regionusa'
-  
-  get 'orders/france' => 'orders#regionfrance'
-  
-  get 'orders/uk' => 'orders#regionuk'
-  
-  get 'orders/export' => 'orders#regionexport'
-  
-  get 'orders/germany' => 'orders#regiongermany'
+  get 'orders/:region' => 'orders#region', :as => :orders_by_region
   
   resources :orders do
     resources :parts

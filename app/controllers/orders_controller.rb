@@ -49,25 +49,9 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def regionexport
-    @orders = Order.where(:region => "Export").reorder(:customer, :due_date, :printer)
-  end
-  
-  def regionuk
-    @orders = Order.where(:region => "UK").reorder(:customer, :due_date, :printer)
-  end
-  
-  def regionusa
-    @orders = Order.where(:region => "USA").reorder(:due_date, :printer)
-  end
-  
-  def regionfrance
-    @orders = Order.where(:region => "France").reorder(:due_date, :printer)
-  end
-  
-  def regiongermany
-    @orders = Order.where(:region => "Germany").reorder(:due_date, :printer)
+
+  def region
+    @orders = Order.where("region = ?", params[:region]).reorder(:due_date, :printer)
   end
 
   private

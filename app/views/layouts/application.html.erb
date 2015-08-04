@@ -26,14 +26,15 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Loans', loans_path %></li>
+        <li><%= link_to 'Outstanding parts', parts_all_path %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outstanding orders<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to 'USA', orders_usa_path %></li>
-            <li><%= link_to 'France', orders_france_path %></li>
-            <li><%= link_to 'Germany', orders_germany_path %></li>
-            <li><%= link_to 'UK', orders_uk_path %></li>
-            <li><%= link_to 'Export', orders_export_path %></li>
+            <li><%= link_to 'USA', orders_by_region_path(:region => 'USA') %></li>
+            <li><%= link_to 'France', orders_by_region_path(:region => 'France') %></li>
+            <li><%= link_to 'Germany', orders_by_region_path(:region => 'Germany') %></li>
+            <li><%= link_to 'UK', orders_by_region_path(:region => 'UK') %></li>
+            <li><%= link_to 'Export', orders_by_region_path(:region => 'Export') %></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to 'All', orders_path %></li>
           </ul>
