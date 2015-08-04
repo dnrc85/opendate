@@ -1,0 +1,33 @@
+<% @title = "OD Dbase - Outstanding parts" %>
+
+<h3>Outstanding parts</h3>
+
+<table class = "table">
+    <thead>
+        <tr>
+            <th>Part number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    
+    <tbody>
+        <% @orders.each do |order| %>
+            <% order.parts.each do |part| %>
+                <tr>    
+                    <td><%= part.part_number %></td>
+                    <td><%= part.description %></td>
+                    <td><%= part.quantity %></td>
+                    <td><%= part.supplier %></td>
+                    <td><%= link_to 'Remove from list', part_path(part), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+    
+
+
+</table>

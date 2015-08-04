@@ -53,6 +53,10 @@ class OrdersController < ApplicationController
   def region
     @orders = Order.where("region = ?", params[:region]).reorder(:due_date, :printer)
   end
+  
+  def printerparts
+    @orders = Order.where("printer = ?", params[:printer])
+  end
 
   private
     def set_order

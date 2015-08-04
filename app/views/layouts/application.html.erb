@@ -26,7 +26,44 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Loans', loans_path %></li>
-        <li><%= link_to 'Outstanding parts', parts_all_path %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outstanding parts<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>Thermal</li>
+            <li><%= link_to '53E', parts_by_printer_path(:printer => '53E') %></li>
+            <li><%= link_to '53S', parts_by_printer_path(:printer => '53S') %></li>
+            <li><%= link_to '53M', parts_by_printer_path(:printer => '53M') %></li>
+            <li><%= link_to '53L', parts_by_printer_path(:printer => '53L') %></li>
+            <li><%= link_to '53CR', parts_by_printer_path(:printer => '53CR') %></li>
+            <li><%= link_to '53CL', parts_by_printer_path(:printer => '53CL') %></li>
+            <li><%= link_to '107S', parts_by_printer_path(:printer => '107S') %></li>
+            <li><%= link_to '107M', parts_by_printer_path(:printer => '107M') %></li>
+            <li><%= link_to '107L', parts_by_printer_path(:printer => '107L') %></li>
+            <li><%= link_to '107CR', parts_by_printer_path(:printer => '107CR') %></li>
+            <li><%= link_to '107CL', parts_by_printer_path(:printer => '107CL') %></li>
+            <li><%= link_to 'iQ', parts_by_printer_path(:printer => 'iQ') %></li>
+            <li role="separator" class="divider"></li>
+            <li>Hot Foil</li>
+            <li><%= link_to 'Eurocode 150', parts_by_printer_path(:printer => 'Eurocode 150') %></li>
+            <li><%= link_to 'Eurocode 180', parts_by_printer_path(:printer => 'Eurocode 180') %></li>
+            <li><%= link_to 'Eurocode 300', parts_by_printer_path(:printer => 'Eurocode 300') %></li>
+            <li><%= link_to 'Printmaster', parts_by_printer_path(:printer => 'Printmaster') %></li>
+            <li><%= link_to 'Printmaster 1000', parts_by_printer_path(:printer => 'Printmaster 1000') %></li>
+            <li><%= link_to 'Printmaster Plus', parts_by_printer_path(:printer => 'Printmaster Plus') %></li>
+            <li><%= link_to 'E-Coder', parts_by_printer_path(:printer => 'E-Coder') %></li>
+            <li><%= link_to 'Sprint Major', parts_by_printer_path(:printer => 'Sprint Major') %></li>
+            <li><%= link_to 'Sprint', parts_by_printer_path(:printer => 'Sprint') %></li>
+            <li role="separator" class="divider"></li>
+            <li>Carton Feeder</li>
+            <li><%= link_to 'MC-810 Carton Feeder', parts_by_printer_path(:printer => 'MC-810 Carton Feeder') %></li>
+            <li role="separator" class="divider"></li>
+            <li>Debosser</li>
+            <li><%= link_to 'Hot Debosser', parts_by_printer_path(:printer => 'Hot Debosser') %></li>
+            <li><%= link_to 'Cold Debosser', parts_by_printer_path(:printer => 'Cold Debosser') %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to 'All', parts_all_path %></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outstanding orders<span class="caret"></span></a>
           <ul class="dropdown-menu">

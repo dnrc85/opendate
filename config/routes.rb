@@ -1,22 +1,19 @@
 Rails.application.routes.draw do
   
   get 'loans/stock' => 'loans#stock'
-  
   resources :loans
-  
   get 'parts/all' => 'parts#view', :as => :parts_all
   
-  get 'orders/:region' => 'orders#region', :as => :orders_by_region
-  
+  get 'orders/:printer/parts' => 'orders#printerparts', :as => :parts_by_printer
+
   resources :orders do
     resources :parts
   end
-  
   resources :parts
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  
+  get 'orders/:region' => 'orders#region', :as => :orders_by_region
+  
 
-  # You can have the root of your site routed with "root"
   root 'orders#index'
 
   # Example of regular route:
