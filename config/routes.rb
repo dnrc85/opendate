@@ -8,14 +8,12 @@ Rails.application.routes.draw do
   
   get 'orders/new' => 'orders#new', :as => :a_new_order
   
-  get 'orders/:region' => 'orders#region', :as => :orders_by_region
-
   resources :orders do
     resources :parts
   end
   resources :parts
   
-  
+  get 'region-orders/:region' => 'orders#region', :as => :orders_by_region
   
 
   root 'orders#index'
