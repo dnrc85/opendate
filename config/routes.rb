@@ -5,13 +5,17 @@ Rails.application.routes.draw do
   get 'parts/all' => 'parts#view', :as => :parts_all
   
   get 'orders/:printer/parts' => 'orders#printerparts', :as => :parts_by_printer
+  
+  get 'orders/new' => 'orders#new', :as => :a_new_order
+  
+  get 'orders/:region' => 'orders#region', :as => :orders_by_region
 
   resources :orders do
     resources :parts
   end
   resources :parts
   
-  get 'orders/:region' => 'orders#region', :as => :orders_by_region
+  
   
 
   root 'orders#index'
