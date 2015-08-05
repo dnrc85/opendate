@@ -4,7 +4,7 @@
 
 <h2>Outstanding Orders</h2>
 
-<%= link_to 'New Order', a_new_order_path, class: "btn btn-primary" %>
+<%= link_to 'New Order', new_order_path, class: "btn btn-primary" %>
 
 <table class = "table">
   <thead>
@@ -17,6 +17,7 @@
       <th>Order Date</th>
       <th>Due Date</th>
       <th>Parts Remaining</th>
+      <th>Notes</th>
       <th></th>
       <th></th>
     </tr>
@@ -33,6 +34,7 @@
         <td><%= order.order_date %></td>
         <td><%= order.due_date %></td>
         <td><%= order.parts.count %></td>
+        <td><%= order.notes %></td>
         <td><%= link_to 'Edit order', edit_order_path(order) %></td>
         <td><%= link_to 'Shipped', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
