@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
   end
   
   def printerparts
-    @orders = Order.where("printer = ?", params[:printer]).reorder(:supplier, :part_number)
+    @orders = Order.where("printer = ?", params[:printer])
   end
 
   private
