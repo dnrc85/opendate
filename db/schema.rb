@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730192243) do
+ActiveRecord::Schema.define(version: 20150825112211) do
 
   create_table "loans", force: :cascade do |t|
     t.string   "customer"
     t.string   "printer"
     t.string   "serial_number"
     t.string   "shipped_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "reason_for_repair"
+    t.text     "details"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -40,10 +42,11 @@ ActiveRecord::Schema.define(version: 20150730192243) do
     t.string   "part_number"
     t.string   "description"
     t.integer  "quantity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "order_id"
     t.string   "supplier"
+    t.string   "ordered_date"
   end
 
   add_index "parts", ["order_id"], name: "index_parts_on_order_id"

@@ -13,7 +13,7 @@
       <th>Printer</th>
       <th>Serial number</th>
       <th>Shipped date</th>
-      <th></th>
+      <th>Details</th>
       <th></th>
     </tr>
   </thead>
@@ -27,7 +27,8 @@
             <td><%= loan.printer %></td>
             <td><%= loan.serial_number %></td>
             <td><%= loan.shipped_date %></td>
-            <td><%= link_to 'Edit loan details', edit_loan_path(loan) %></td>
+            <td><%= loan.details %></td>
+            <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
           </tr>
         <% end %>
       <% end %>
