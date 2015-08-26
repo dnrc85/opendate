@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :treatments
   get 'loans/stock' => 'loans#stock'
   resources :loans
   get 'parts/all' => 'parts#view', :as => :parts_all

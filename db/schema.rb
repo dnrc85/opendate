@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825112211) do
+ActiveRecord::Schema.define(version: 20150826101509) do
 
   create_table "loans", force: :cascade do |t|
     t.string   "customer"
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(version: 20150825112211) do
     t.string   "region"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "treatments", force: :cascade do |t|
+    t.string   "part_number"
+    t.string   "description"
+    t.string   "quantity"
+    t.string   "supplier"
+    t.string   "process"
+    t.string   "date_sent"
+    t.string   "date_due_back"
+    t.string   "notes"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

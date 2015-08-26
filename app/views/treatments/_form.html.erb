@@ -1,0 +1,46 @@
+<%= form_for(@treatment) do |f| %>
+  <% if @treatment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@treatment.errors.count, "error") %> prohibited this treatment from being saved:</h2>
+
+      <ul>
+      <% @treatment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class = "jumbotron">
+  
+    <%= f.label :part_number %><br>
+    <%= f.text_field :part_number %><br>
+    
+    <%= f.label :description %><br>
+    <%= f.text_field :description %><br>
+    
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %><br>
+    
+    <%= f.label :supplier %><br>
+    <%= f.text_field :supplier %><br>
+    
+    <%= f.label :process %><br>
+    <%= f.text_field :process %><br>
+  
+    <%= f.label :date_sent %><br>
+    <%= f.text_field :date_sent %><br>
+    
+    <%= f.label :date_due_back %><br>
+    <%= f.text_field :date_due_back %><br>
+    
+    <%= f.label :notes %><br>
+    <%= f.text_field :notes %><br>
+  
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>
