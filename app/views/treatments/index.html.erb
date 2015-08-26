@@ -3,6 +3,7 @@
 <h2>Treatments</h2>
 
 <%= link_to 'New Treatment', new_treatment_path, class: "btn btn-primary" %>
+<%= link_to 'Archived treatments', treatments_archived_path, class: "btn btn-primary" %>
 
 <table class = "table">
   <thead>
@@ -12,22 +13,24 @@
       <th>Quantity</th>
       <th>Supplier</th>
       <th>Date Sent</th>
-      <th>Date Due Back</th>
+      <th>Estimated lead time</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @treatments.each do |treatment| %>
-      <tr>
-        <td><%= link_to treatment.part_number, edit_treatment_path(treatment) %></td>
-        <td><%= treatment.description %></td>
-        <td><%= treatment.quantity %></td>
-        <td><%= treatment.supplier %></td>
-        <td><%= treatment.date_sent %></td>
-        <td><%= treatment.date_due_back %></td>
-        <td><%= link_to 'Received', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if treatment.completed_at.blank? %>
+        <tr>
+          <td><%= link_to treatment.part_number, edit_treatment_path(treatment) %></td>
+          <td><%= treatment.description %></td>
+          <td><%= treatment.quantity %></td>
+          <td><%= treatment.supplier %></td>
+          <td><%= treatment.date_sent %></td>
+          <td><%= treatment.date_due_back %></td>
+          <td><%= link_to 'Received', complete_treatment_path(treatment), method: :patch %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

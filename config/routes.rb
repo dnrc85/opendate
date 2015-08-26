@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
   
-  resources :treatments
+  get 'treatments/archived' => 'treatments#archived'
+  
+  resources :treatments do
+    member do
+      patch :complete
+    end
+  end
+  
+  
+  
   get 'loans/stock' => 'loans#stock'
+  
   resources :loans
+  
   get 'parts/all' => 'parts#view', :as => :parts_all
   
   get 'orders/:printer/parts' => 'orders#printerparts', :as => :parts_by_printer

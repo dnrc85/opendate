@@ -60,6 +60,17 @@ class TreatmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def complete
+    @treatment = Treatment.find(params[:id])
+    time = Time.now
+    @treatment.update_attribute(:completed_at, time.to_formatted_s(:short))
+    redirect_to treatments_path, notice: "Treatment archived complete"
+  end
+  
+  def archived
+    @treatments = Treatment.all
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +80,6 @@ class TreatmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def treatment_params
-      params.require(:treatment).permit(:part_number, :description, :quantity, :supplier, :process, :date_sent, :date_due_back, :notes)
+      params.require(:treatment).permit(:part_number, :description, :quantity, :supplier, :process, :date_sent, :date_due_back, :notes, :completed_at)
     end
 end

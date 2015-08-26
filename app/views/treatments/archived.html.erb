@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Treatments Booked In</h2>
+
+<%= link_to 'Outstanding treatments', treatments_path, class: "btn btn-primary" %>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Part Number</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Supplier</th>
+      <th>Date Back In</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @treatments.each do |treatment| %>
+        <% if treatment.completed_at.present? %>
+            <tr>
+              <td><%= treatment.part_number %></td>
+              <td><%= treatment.description %></td>
+              <td><%= treatment.quantity %></td>
+              <td><%= treatment.supplier %></td>
+              <td><%= treatment.completed_at %></td>
+            </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
