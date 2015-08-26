@@ -14,20 +14,18 @@
       <th>Date Sent</th>
       <th>Date Due Back</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @treatments.each do |treatment| %>
       <tr>
-        <td><%= link_to treatment.part_number, treatment %></td>
+        <td><%= link_to treatment.part_number, edit_treatment_path(treatment) %></td>
         <td><%= treatment.description %></td>
         <td><%= treatment.quantity %></td>
         <td><%= treatment.supplier %></td>
         <td><%= treatment.date_sent %></td>
         <td><%= treatment.date_due_back %></td>
-        <td><%= link_to 'Edit', edit_treatment_path(treatment) %></td>
         <td><%= link_to 'Received', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -28,7 +28,7 @@ class TreatmentsController < ApplicationController
 
     respond_to do |format|
       if @treatment.save
-        format.html { redirect_to @treatment, notice: 'Treatment was successfully created.' }
+        format.html { redirect_to treatments_path, notice: 'Treatment was successfully created.' }
         format.json { render :show, status: :created, location: @treatment }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class TreatmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def treatment_params
-      params.require(:treatment).permit(:index)
+      params.require(:treatment).permit(:part_number, :description, :quantity, :supplier, :process, :date_sent, :date_due_back, :notes)
     end
 end
