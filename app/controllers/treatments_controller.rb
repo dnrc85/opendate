@@ -42,7 +42,7 @@ class TreatmentsController < ApplicationController
   def update
     respond_to do |format|
       if @treatment.update(treatment_params)
-        format.html { redirect_to @treatment, notice: 'Treatment was successfully updated.' }
+        format.html { redirect_to treatments_path, notice: 'Treatment was successfully updated.' }
         format.json { render :show, status: :ok, location: @treatment }
       else
         format.html { render :edit }
