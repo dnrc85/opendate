@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'home/index' => 'home#index'
+  
   get 'treatments/archived' => 'treatments#archived'
   
   resources :treatments do
@@ -33,7 +35,7 @@ Rails.application.routes.draw do
   get 'region-orders/:region' => 'orders#region', :as => :orders_by_region
   
 
-  root 'orders#index'
+  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
