@@ -124,7 +124,7 @@
                   </thead>
                 
                   <tbody>
-                    <% @orders_outstanding.each do |order| %>
+                    <% @orders_outstanding.limit(5).each do |order| %>
                       <% if order.completed_at.blank? %>
                         <tr>
                           <td><%= order.order_number %></td>
