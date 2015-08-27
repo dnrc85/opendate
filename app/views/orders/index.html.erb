@@ -5,6 +5,7 @@
 <h2>Outstanding Orders</h2>
 
 <%= link_to 'New Order', new_order_path, class: "btn btn-primary" %>
+<%= link_to 'Shipped Orders', orders_archived_path, class: "btn btn-primary" %>
 
 <table class = "table">
   <thead>
@@ -15,8 +16,7 @@
       <th>Quantity</th>
       <th>Status</th>
       <th>Order Date</th>
-      <th>Due Date</th>
-      <th>Parts Remaining</th>
+      <th>Due To Ship Estimate</th>
       <th>Notes</th>
       <th></th>
       <th></th>
@@ -25,19 +25,20 @@
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= link_to order.order_number, order %></td>
-        <td><%= link_to order.customer, order %></td>
-        <td><%= order.printer %></td>
-        <td><%= order.quantity %></td>
-        <td><%= order.status %></td>
-        <td><%= order.order_date %></td>
-        <td><%= order.due_date %></td>
-        <td><%= order.parts.count %></td>
-        <td><%= order.notes %></td>
-        <td><%= link_to 'Edit order', edit_order_path(order) %></td>
-        <td><%= link_to 'Shipped', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if order.completed_at.blank? %>
+        <tr>
+          <td><%= link_to order.order_number, order %></td>
+          <td><%= link_to order.customer, order %></td>
+          <td><%= order.printer %></td>
+          <td><%= order.quantity %></td>
+          <td><%= order.status %></td>
+          <td><%= order.order_date %></td>
+          <td><%= order.due_date %></td>
+          <td><%= order.notes %></td>
+          <td><%= link_to 'Edit order', edit_order_path(order) %></td>
+          <td><%= link_to 'Shipped', complete_order_path(order), method: :patch %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

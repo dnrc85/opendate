@@ -65,7 +65,7 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.find(params[:id])
     time = Time.now
     @treatment.update_attribute(:completed_at, time.to_formatted_s(:short))
-    redirect_to treatments_path, notice: "Treatment archived complete"
+    redirect_to treatments_path, notice: "Treatment archived as complete"
   end
   
   def archived
