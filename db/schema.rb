@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826223554) do
+ActiveRecord::Schema.define(version: 20150827112849) do
 
   create_table "loans", force: :cascade do |t|
     t.string   "customer"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150826223554) do
     t.string   "region"
     t.string   "status"
     t.string   "notes"
+    t.text     "completed_at"
   end
 
   create_table "parts", force: :cascade do |t|

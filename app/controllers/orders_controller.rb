@@ -57,6 +57,17 @@ class OrdersController < ApplicationController
   def printerparts
     @orders = Order.where("printer = ?", params[:printer])
   end
+  
+  def complete
+    @order = Order.find(params[:id])
+    time = Time.now
+    @order.update_attribute(:completed_at, time.to_formatted_s(:short))
+    redirect_to orders_path, notice: "Order archived as shipped"
+  end
+  
+  def archived
+    @orders = Order.all
+  end
 
   private
     def set_order

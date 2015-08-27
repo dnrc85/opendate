@@ -16,11 +16,16 @@ Rails.application.routes.draw do
   
   get 'parts/all' => 'parts#view', :as => :parts_all
   
+  get 'orders/archived' => 'orders#archived'
+  
   get 'orders/:printer/parts' => 'orders#printerparts', :as => :parts_by_printer
   
   get 'orders/new' => 'orders#new', :as => :a_new_order
   
   resources :orders do
+    member do
+      patch :complete
+    end
     resources :parts
   end
   resources :parts
