@@ -28,7 +28,7 @@
             <td><%= loan.serial_number %></td>
             <td><%= loan.shipped_date %></td>
             <td><%= loan.details %></td>
-            <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
+            <td><%= link_to 'Edit', edit_loan_path(loan), class: "link_to" %></td>
           </tr>
         <% end %>
       <% end %>

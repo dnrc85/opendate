@@ -27,16 +27,16 @@
     <% @orders.each do |order| %>
       <% if order.completed_at.blank? %>
         <tr>
-          <td><%= link_to order.order_number, order %></td>
-          <td><%= link_to order.customer, order %></td>
+          <td><%= link_to order.order_number, order, class: "link_to" %></td>
+          <td><%= link_to order.customer, order, class: "link_to" %></td>
           <td><%= order.printer %></td>
           <td><%= order.quantity %></td>
           <td><%= order.status %></td>
           <td><%= order.order_date %></td>
           <td><%= order.due_date %></td>
           <td><%= order.notes %></td>
-          <td><%= link_to 'Edit order', edit_order_path(order) %></td>
-          <td><%= link_to 'Shipped', complete_order_path(order), method: :patch %></td>
+          <td><%= link_to 'Edit order', edit_order_path(order), class: "link_to" %></td>
+          <td><%= link_to 'Shipped', complete_order_path(order), method: :patch, class: "link_to" %></td>
         </tr>
       <% end %>
     <% end %>

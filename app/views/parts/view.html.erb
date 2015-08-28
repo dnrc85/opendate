@@ -22,7 +22,7 @@
             <td><%= part.description %></td>
             <td><%= part.quantity %></td>
             <td><%= part.supplier %></td>
-            <td><%= link_to 'Remove from list', part_path(part), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Remove from list', part_path(part), method: :delete, data: { confirm: 'Are you sure?' }, class: "link_to" %></td>
         </tr>
     </tbody>
     

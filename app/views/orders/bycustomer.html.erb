@@ -33,8 +33,8 @@
         <td><%= order.order_date %></td>
         <td><%= order.due_date %></td>
         <td><%= order.parts.count %></td>
-        <td><%= link_to 'Edit order', edit_order_path(order) %></td>
-        <td><%= link_to 'Mark complete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit order', edit_order_path(order), class: "link_to" %></td>
+        <td><%= link_to 'Mark complete', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "link_to" %></td>
       </tr>
     <% end %>
   </tbody>
