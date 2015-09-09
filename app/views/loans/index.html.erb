@@ -24,7 +24,7 @@
   <tbody>
   
       <% @loans.each do |loan| %>
-        <% if loan.completed_at.blank? %>
+        <% if loan.completed_at.blank? && loan.shipped_date.present? %>
           <tr>
             <td><%= loan.customer %></td>
             <td><%= loan.printer %></td>
