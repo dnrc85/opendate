@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Loans returned history</h2>
+
+<%= link_to 'Outstanding Loans', loans_path, class: "btn btn-primary" %>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Contact</th>
+      <th>Printer</th>
+      <th>Serial number</th>
+      <th>Power supply</th>
+      <th>Serial number</th>
+      <th>Returned date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loans.each do |loan| %>
+        <% if loan.completed_at.present? %>
+            <tr>
+              <td><%= loan.customer %></td>
+              <td><%= loan.contact_name %></td>
+              <td><%= loan.printer %></td>
+              <td><%= loan.serial_number %></td>
+              <td><%= loan.psu_type %></td>
+              <td><%= loan.psu_serial_number %></td>
+              <td><%= loan.completed_at %></td>
+            </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

@@ -52,6 +52,17 @@ class LoansController < ApplicationController
   def stock
     @loans = Loan.all
   end
+  
+  def complete
+    @loan = Loan.find(params[:id])
+    time = Time.now
+    @loan.update_attribute(:completed_at, time.to_formatted_s(:short))
+    redirect_to loans_path, notice: "Loan archived as complete"
+  end
+  
+  def archived
+    @loans = Loan.all
+  end
 
   private
     def set_loan
@@ -59,6 +70,6 @@ class LoansController < ApplicationController
     end
 
     def loan_params
-      params.require(:loan).permit(:customer, :printer, :serial_number, :shipped_date, :details, :psu_type, :psu_serial_number, :contact_name, :address, :tel_number)
+      params.require(:loan).permit(:customer, :printer, :serial_number, :shipped_date, :details, :psu_type, :psu_serial_number, :contact_name, :address, :tel_number, :completed_at)
     end
 end

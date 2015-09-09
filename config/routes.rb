@@ -10,11 +10,15 @@ Rails.application.routes.draw do
     end
   end
   
-  
+  get 'loans/archived' => 'loans#archived'
   
   get 'loans/stock' => 'loans#stock'
   
-  resources :loans
+  resources :loans do
+    member do
+      patch :complete
+    end
+  end
   
   get 'parts/all' => 'parts#view', :as => :parts_all
   

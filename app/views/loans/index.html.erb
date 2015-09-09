@@ -4,7 +4,7 @@
 
 <h2>Loans outstanding</h2>
 
-<%= link_to 'New loan entry', new_loan_path, class: "btn btn-primary" %><%= link_to 'Loan machines in stock', loans_stock_path, class: "btn btn-primary" %></br>
+<%= link_to 'New loan entry', new_loan_path, class: "btn btn-primary" %><%= link_to 'Loan machines in stock', loans_stock_path, class: "btn btn-primary" %><%= link_to 'Archived loans', loans_archived_path, class: "btn btn-primary" %></br>
 
 <table class = "table">
   <thead>
@@ -17,13 +17,14 @@
       <th>Shipped date</th>
       <th>Details</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
   
       <% @loans.each do |loan| %>
-        <% if loan.shipped_date.present? %>
+        <% if loan.completed_at.blank? %>
           <tr>
             <td><%= loan.customer %></td>
             <td><%= loan.printer %></td>
@@ -33,6 +34,7 @@
             <td><%= loan.shipped_date %></td>
             <td><%= loan.details %></td>
             <td><%= link_to 'Edit', edit_loan_path(loan), class: "link_to" %></td>
+            <td><%= link_to 'Returned', complete_loan_path(loan), method: :patch, class: "link_to" %></td>
           </tr>
         <% end %>
       <% end %>
