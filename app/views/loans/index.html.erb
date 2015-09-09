@@ -12,6 +12,8 @@
       <th>Customer</th>
       <th>Printer</th>
       <th>Serial number</th>
+      <th>Power supply</th>
+      <th>Serial number</th>
       <th>Shipped date</th>
       <th>Details</th>
       <th></th>
@@ -26,6 +28,8 @@
             <td><%= loan.customer %></td>
             <td><%= loan.printer %></td>
             <td><%= loan.serial_number %></td>
+            <td><%= loan.psu_type %></td>
+            <td><%= loan.psu_serial_number %></td>
             <td><%= loan.shipped_date %></td>
             <td><%= loan.details %></td>
             <td><%= link_to 'Edit', edit_loan_path(loan), class: "link_to" %></td>

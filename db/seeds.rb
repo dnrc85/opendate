@@ -1,3 +1,8 @@
+# --none-- option
+
+no_printer = Printer.where(name: 'None').first_or_create(name: 'None')
+no_psu = Psu.where(psu_type: 'None').first_or_create(psu_type: 'None')
+
 # Thermal
 
 t53s_printer = Printer.where(name: '53S').first_or_create(name: '53S')
@@ -48,3 +53,9 @@ france_region = Region.where(region: 'France').first_or_create(region: 'France')
 germany_region = Region.where(region: 'Germany').first_or_create(region: 'Germany')
 export_region = Region.where(region: 'Export').first_or_create(region: 'Export')
 uk_region = Region.where(region: 'UK').first_or_create(region: 'UK')
+
+# PSUs
+
+tc2_psu = Psu.where(psu_type: 'HS4 TC2').first_or_create(psu_type: 'HS4 TC2')
+tce_psu = Psu.where(psu_type: 'HS4 53E').first_or_create(psu_type: 'HS4 53E')
+digi50_psu = Psu.where(psu_type: 'Digi 50 Controller').first_or_create(psu_type: 'Digi 50 Controller')

@@ -21,6 +21,12 @@
     
     <%= f.label :serial_number %></br>
     <%= f.text_field :serial_number %></br>
+    
+    <%= f.label :psu_type, "Power supply" %></br>
+    <%= f.select :psu_type, Psu.all.map { |f| f.psu_type } %></br>
+    
+    <%= f.label :psu_serial_number %></br>
+    <%= f.text_field :psu_serial_number %></br>
 
     <%= f.label :shipped_date %></br>
     <%= f.text_field :shipped_date, placeholder: 'dd/mm/yy' %></br>
