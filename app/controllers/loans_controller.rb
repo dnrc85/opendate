@@ -59,6 +59,6 @@ class LoansController < ApplicationController
     end
 
     def loan_params
-      params.require(:loan).permit(:customer, :printer, :serial_number, :shipped_date, :details, :psu_type, :psu_serial_number)
+      params.require(:loan).permit(:customer, :printer, :serial_number, :shipped_date, :details, :psu_type, :psu_serial_number, :contact_name, :address, :tel_number)
     end
 end
