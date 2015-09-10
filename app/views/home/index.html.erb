@@ -95,7 +95,7 @@
             
               <tbody>
                 <% @treatments_outstanding.limit(5).each do |treatment| %>
-                  <% if treatment.completed_at.blank? %>
+                  
                     <tr>
                       <td><%= treatment.part_number %></td>
                       <td><%= treatment.description %></td>
@@ -103,7 +103,7 @@
                       <td><%= treatment.supplier %></td>
                       <td><%= treatment.date_due_back %></td>
                     </tr>
-                  <% end %>
+                  
                 <% end %>
               </tbody>
             </table>
