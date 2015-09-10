@@ -126,7 +126,7 @@
                 
                   <tbody>
                     <% @orders_outstanding.limit(5).each do |order| %>
-                      <% if order.completed_at.blank? %>
+                      <% if order.completed_at.blank? && order.due_date.present? %>
                         <tr>
                           <td><%= order.order_number %></td>
                           <td><%= order.customer %></td>
