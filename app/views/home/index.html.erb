@@ -1,142 +1,143 @@
-    <div class="container">
+<div class="container">
 
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">The Latest - 
-                    <small>The most recent ins and outs</small>
-                </h1>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">The Latest - 
+                <small>The most recent ins and outs</small>
+            </h1>
         </div>
-        
-        <div class="row">
+    </div>
+    
+    <div class="row">
 
-            <div class="col-md-6 portfolio-item">
-                <h3>
-                    <%= link_to 'Treatments', treatments_archived_path, class: "link_to" %>
-                </h3>
-                <p>Fresh in on anodising and plating</p>
-                 <table class = "table">
-                  <thead>
+        <div class="col-md-6 portfolio-item">
+            <h3>
+                <%= link_to 'Treatments', treatments_archived_path, class: "link_to" %>
+            </h3>
+            <p>Fresh in on anodising and plating</p>
+             <table class = "table">
+              <thead>
+                <tr>
+                  <th>Part Number</th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+            
+              <tbody>
+                <% @treatments.limit(5).each do |treatment| %>
+                  <% if treatment.completed_at.present? %>
                     <tr>
-                      <th>Part Number</th>
-                      <th>Description</th>
-                      <th>Quantity</th>
+                      <td><%= treatment.part_number %></td>
+                      <td><%= treatment.description %></td>
+                      <td><%= treatment.quantity %></td>
                     </tr>
-                  </thead>
-                
-                  <tbody>
-                    <% @treatments.limit(5).each do |treatment| %>
-                      <% if treatment.completed_at.present? %>
-                        <tr>
-                          <td><%= treatment.part_number %></td>
-                          <td><%= treatment.description %></td>
-                          <td><%= treatment.quantity %></td>
-                        </tr>
-                      <% end %>
-                    <% end %>
-                  </tbody>
-                </table>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
 
-            </div>
-            <div class="col-md-6 portfolio-item">
-                <h3>
-                    <%= link_to 'Shipments', orders_archived_path, class: "link_to" %>
-                </h3>
-                <p>Recent printers out the door</p>
-                <table class = "table">
-                  <thead>
-                    <tr>
-                      <th>Customer</th>
-                      <th>Printer</th>
-                      <th>Quantity</th>
-                    </tr>
-                  </thead>
-                
-                  <tbody>
-                    <% @orders.limit(5).each do |order| %>
-                        <% if order.completed_at.present? %>
-                          <tr>
-                            <td><%= order.customer %></td>
-                            <td><%= order.printer %></td>
-                            <td><%= order.quantity %></td>
-                          </tr>
-                        <% end %>
-                    <% end %>
-                  </tbody>
-                </table>
-            </div>
         </div>
-        
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Next Up - 
-                  <small>What we're expecting to come and go next</small>
-                </h1>
-                
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-6 portfolio-item">
-                <h3>
-                    <%= link_to 'Treatments', treatments_path, class: "link_to" %>
-                </h3>
-                <p>Next bits due back on anodising and plating</p>
-                <table class = "table">
-                  <thead>
-                    <tr>
-                      <th>Part ref</th>
-                      <th>Description</th>
-                      <th>Quantity</th>
-                      <th>Supplier</th>
-                      <th>Due in</th>
-                    </tr>
-                  </thead>
-                
-                  <tbody>
-                    <% @treatments_outstanding.limit(5).each do |treatment| %>
-                      <% if treatment.completed_at.blank? %>
-                        <tr>
-                          <td><%= treatment.part_number %></td>
-                          <td><%= treatment.description %></td>
-                          <td><%= treatment.quantity %></td>
-                          <td><%= treatment.supplier %></td>
-                          <td><%= treatment.date_due_back %></td>
-                        </tr>
-                      <% end %>
+        <div class="col-md-6 portfolio-item">
+            <h3>
+                <%= link_to 'Shipments', orders_archived_path, class: "link_to" %>
+            </h3>
+            <p>Recent printers out the door</p>
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Printer</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+            
+              <tbody>
+                <% @orders.limit(5).each do |order| %>
+                    <% if order.completed_at.present? %>
+                      <tr>
+                        <td><%= order.customer %></td>
+                        <td><%= order.printer %></td>
+                        <td><%= order.quantity %></td>
+                      </tr>
                     <% end %>
-                  </tbody>
-                </table>
-            </div>
-            <div class="col-md-6 portfolio-item">
-                <h3>
-                    <%= link_to 'Shipments', orders_path, class: "link_to" %>
-                </h3>
-                <p>Printers next due up for despatch</p>
-                <table class = "table">
-                  <thead>
-                    <tr>
-                      <th>Order Number</th>
-                      <th>Customer</th>
-                      <th>Printer</th>
-                      <th>Quantity</th>
-                      <th>Due out</th>
-                    </tr>
-                  </thead>
-                
-                  <tbody>
-                    <% @orders_outstanding.limit(5).each do |order| %>
-                      <% if order.completed_at.blank? && order.due_date.present? %>
-                        <tr>
-                          <td><%= order.order_number %></td>
-                          <td><%= order.customer %></td>
-                          <td><%= order.printer %></td>
-                          <td><%= order.quantity %></td>
-                          <td><%= order.due_date %></td>
-                        </tr>
-                      <% end %>
-                    <% end %>
-                  </tbody>
-                </table>
-            </div>
+                <% end %>
+              </tbody>
+            </table>
         </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Next Up - 
+              <small>What we're expecting to come and go next</small>
+            </h1>
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 portfolio-item">
+            <h3>
+                <%= link_to 'Treatments', treatments_path, class: "link_to" %>
+            </h3>
+            <p>Next bits due back on anodising and plating</p>
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>Part ref</th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                  <th>Supplier</th>
+                  <th>Due in</th>
+                </tr>
+              </thead>
+            
+              <tbody>
+                <% @treatments_outstanding.limit(5).each do |treatment| %>
+                  <% if treatment.completed_at.blank? %>
+                    <tr>
+                      <td><%= treatment.part_number %></td>
+                      <td><%= treatment.description %></td>
+                      <td><%= treatment.quantity %></td>
+                      <td><%= treatment.supplier %></td>
+                      <td><%= treatment.date_due_back %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+        <div class="col-md-6 portfolio-item">
+            <h3>
+                <%= link_to 'Shipments', orders_path, class: "link_to" %>
+            </h3>
+            <p>Printers next due up for despatch</p>
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>Order Number</th>
+                  <th>Customer</th>
+                  <th>Printer</th>
+                  <th>Quantity</th>
+                  <th>Due out</th>
+                </tr>
+              </thead>
+            
+              <tbody>
+                <% @orders_outstanding.limit(5).each do |order| %>
+                  <% if order.completed_at.blank? && order.due_date.present? %>
+                    <tr>
+                      <td><%= order.order_number %></td>
+                      <td><%= order.customer %></td>
+                      <td><%= order.printer %></td>
+                      <td><%= order.quantity %></td>
+                      <td><%= order.due_date %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
