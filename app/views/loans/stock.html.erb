@@ -21,7 +21,7 @@
         <tr>
           <td><%= loan.printer %></td>
           <td><%= loan.serial_number %></td>
-          <td><%= link_to 'Edit loan details', edit_loan_path(loan), class: "link_to" %></td>
+          <td><%= link_to 'Edit machine details', edit_loan_path(loan), class: "link_to" %></td>
           <td><%= link_to 'Delete', loan, method: :delete, data: { confirm: 'Are you sure?' }, class: "link_to" %></td>
         </tr>
     <% end %>

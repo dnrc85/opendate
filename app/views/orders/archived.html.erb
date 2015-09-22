@@ -16,6 +16,7 @@
       <th>Order Date</th>
       <th>Shipped Date</th>
       <th>Notes</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -30,6 +31,7 @@
             <td><%= order.order_date %></td>
             <td><%= order.completed_at %></td>
             <td><%= order.notes %></td>
+            <td><%= link_to 'Edit shipped machine details', edit_order_path(order), class: "link_to" %></td>
           </tr>
         <% end %>
     <% end %>

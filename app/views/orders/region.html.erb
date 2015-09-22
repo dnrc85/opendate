@@ -16,26 +16,24 @@
       <th>Status</th>
       <th>Order Date</th>
       <th>Due Date</th>
-      <th>Parts Remaining</th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= link_to order.order_number, order, class: "link_to" %></td>
-        <td><%= link_to order.customer, order, class: "link_to" %></td>
-        <td><%= order.printer %></td>
-        <td><%= order.quantity %></td>
-        <td><%= order.status %></td>
-        <td><%= order.order_date %></td>
-        <td><%= order.due_date %></td>
-        <td><%= order.parts.count %></td>
-        <td><%= link_to 'Edit order', edit_order_path(order), class: "link_to" %></td>
-        <td><%= link_to 'Mark complete', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "link_to" %></td>
-      </tr>
+      <% if order.completed_at.blank? %>
+        <tr>
+          <td><%= link_to order.order_number, order, class: "link_to" %></td>
+          <td><%= link_to order.customer, order, class: "link_to" %></td>
+          <td><%= order.printer %></td>
+          <td><%= order.quantity %></td>
+          <td><%= order.status %></td>
+          <td><%= order.order_date %></td>
+          <td><%= order.due_date %></td>
+          <td><%= link_to 'Edit order', edit_order_path(order), class: "link_to" %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
