@@ -1,0 +1,2 @@
+module LowStocksHelper
+end

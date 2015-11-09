@@ -1,0 +1,40 @@
+<%= form_for(@low_stock) do |f| %>
+  <% if @low_stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@low_stock.errors.count, "error") %> prohibited this low_stock from being saved:</h2>
+
+      <ul>
+      <% @low_stock.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "col-md-6">
+    <% user_name = current_user.email.chomp("@opendate.co.uk").gsub(".", " ").split(" ")[0] %>
+    
+    <%= f.label :part_number %></br>
+    <%= f.text_field :part_number %></br>
+    
+    <%= f.label :description %></br>
+    <%= f.text_field :description %></br>
+    
+    <%= f.label :quantity_in_stock %></br>
+    <%= f.text_field :quantity_in_stock %></br>
+    
+    <%= f.label :quantity_required %></br>
+    <%= f.text_field :quantity_required %></br>
+    
+    <%= f.label :user_id, "Entered by" %></br>
+    <%= f.text_field :user_id, :value => user_name.camelize, :readonly => true %></br>
+  
+  
+    <div class="actions">
+      <%= f.submit "Confirm", class: "btn btn-primary" %>
+    </div>
+    
+  </div>
+
+
+<% end %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Low Stock</h1>
+
+<% if current_user %>
+<%= link_to 'New low stock entry', new_low_stock_path, class: "btn btn-primary" %>
+<% end %>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Part Number</th>
+      <th>Description</th>
+      <th>Stock Qty</th>
+      <th>Required Qty</th>
+      <th>Entered By</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @low_stocks.each do |low_stock| %>
+      <tr>
+        <td><%= low_stock.part_number %></td>
+        <td><%= low_stock.description %></td>
+        <td><%= low_stock.quantity_in_stock %></td>
+        <td><%= low_stock.quantity_required %></td>
+        <td><%= low_stock.user.email.chomp("@opendate.co.uk").gsub(".", " ").split(" ")[0].camelize %></td>
+        <td><%= link_to 'Show', low_stock %></td>
+        <td><%= link_to 'Edit', edit_low_stock_path(low_stock) %></td>
+        <td><%= link_to 'Destroy', low_stock, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

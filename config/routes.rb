@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :low_stocks
+  devise_for :users
+  
   get 'home/index' => 'home#index'
   
   get 'treatments/archived' => 'treatments#archived'

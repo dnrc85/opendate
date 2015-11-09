@@ -9,6 +9,7 @@
 </head>
 <body>
 
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,6 +30,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        
+        <li>
+          <% if current_user %>
+            <p class = "login">Logged in as <%= current_user.email.chomp("@opendate.co.uk").gsub(".", " ").split(" ")[0].camelize %></p>
+          <% end %>
+        </li>
+        <li><%= link_to 'Log out', destroy_user_session_path, method: :delete if current_user %></li>
+        
+        <li class = "link_to"><%= link_to 'Low stock', low_stocks_path %></li>
+        
         <li class = "link_to"><%= link_to 'Treatments', treatments_path, class: "link_to" %></li>
         <li class = "link_to"><%= link_to 'Loans', loans_path, class: "link_to" %></li>
 <% if false %> 
@@ -87,6 +98,8 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
 
 <%= yield %>
 

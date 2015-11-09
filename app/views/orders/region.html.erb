@@ -17,6 +17,7 @@
       <th>Order Date</th>
       <th>Due Date</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -32,6 +33,7 @@
           <td><%= order.order_date %></td>
           <td><%= order.due_date %></td>
           <td><%= link_to 'Edit order', edit_order_path(order), class: "link_to" %></td>
+          <td><%= link_to 'Shipped', complete_order_path(order), method: :patch, class: "link_to" %></td>
         </tr>
       <% end %>
     <% end %>
