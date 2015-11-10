@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   
-  resources :low_stocks
+  get 'low_stocks/ordered' => 'low_stocks#archived'
+  
+  resources :low_stocks do
+    member do
+      patch :complete
+    end
+  end
+  
   devise_for :users
   
   get 'home/index' => 'home#index'

@@ -47,7 +47,7 @@ class LowStocksController < ApplicationController
   def update
     respond_to do |format|
       if @low_stock.update(low_stock_params)
-        format.html { redirect_to @low_stock, notice: 'Low stock was successfully updated.' }
+        format.html { redirect_to low_stocks_path, notice: 'Low stock was successfully updated.' }
         format.json { render :show, status: :ok, location: @low_stock }
       else
         format.html { render :edit }
@@ -65,6 +65,17 @@ class LowStocksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def complete
+    @low_stock = LowStock.find(params[:id])
+    time = Time.now
+    @low_stock.update_attribute(:completed_at, time.to_formatted_s(:short))
+    redirect_to low_stocks_path, notice: "Part placed on order"
+  end
+  
+  def archived
+    @low_stocks = LowStock.all
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

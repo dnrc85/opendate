@@ -1,10 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Low Stock</h1>
+<h2>Ordered parts</h2>
 
-<% if current_user %>
-<%= link_to 'New low stock entry', new_low_stock_path, class: "btn btn-primary" %><%= link_to 'Parts on order', low_stocks_ordered_path, class: "btn btn-primary" %>
-<% end %>
+<%= link_to 'Back to outstanding', low_stocks_path, class: "btn btn-primary" %>
 
 <table class = "table">
   <thead>
@@ -14,26 +12,22 @@
       <th>Stock Qty</th>
       <th>Required Qty</th>
       <th>Entered By</th>
-      <th></th>
-      <th></th>
+      <th>Date ordered</th>
     </tr>
   </thead>
 
   <tbody>
     <% @low_stocks.each do |low_stock| %>
-      <% if low_stock.completed_at.blank? %>
+      <% if low_stock.completed_at.present? %>
         <tr>
           <td><%= low_stock.part_number %></td>
           <td><%= low_stock.description %></td>
           <td><%= low_stock.quantity_in_stock %></td>
           <td><%= low_stock.quantity_required %></td>
           <td><%= low_stock.user.email.chomp("@opendate.co.uk").gsub(".", " ").split(" ")[0].camelize %></td>
-          <td><%= link_to 'Edit', edit_low_stock_path(low_stock), class: "link_to" %></td>
-          <td><%= link_to 'Ordered', complete_low_stock_path(low_stock), method: :patch, class: "link_to" %></td>
+          <td><%= low_stock.completed_at %></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
-
-<br>
