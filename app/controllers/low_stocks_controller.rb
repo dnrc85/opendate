@@ -85,6 +85,6 @@ class LowStocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def low_stock_params
-      params.require(:low_stock).permit(:part_number, :description, :quantity_in_stock, :quantity_required, :user_id)
+      params.require(:low_stock).permit(:part_number, :description, :quantity_in_stock, :quantity_required, :user_id, :due_date)
     end
 end

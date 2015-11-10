@@ -16,24 +16,32 @@
       <th>Entered By</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @low_stocks.each do |low_stock| %>
-      <% if low_stock.completed_at.blank? %>
+      <% if low_stock.due_date.blank? %>
         <tr>
           <td><%= low_stock.part_number %></td>
           <td><%= low_stock.description %></td>
           <td><%= low_stock.quantity_in_stock %></td>
           <td><%= low_stock.quantity_required %></td>
           <td><%= low_stock.user.email.chomp("@opendate.co.uk").gsub(".", " ").split(" ")[0].camelize %></td>
+          <% if current_user == low_stock.user %>
           <td><%= link_to 'Edit', edit_low_stock_path(low_stock), class: "link_to" %></td>
-          <td><%= link_to 'Ordered', complete_low_stock_path(low_stock), method: :patch, class: "link_to" %></td>
+          <% else %>
+          <td></td>
+          <% end %>
+          <td>
+            <%= form_for(low_stock) do |f| %>
+              <%= f.text_field :due_date, :placeholder => "Due date" %>
+              <%= f.submit "Ordered", method: :post %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
-
-<br>
