@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102164801) do
+ActiveRecord::Schema.define(version: 20151109231655) do
 
   create_table "loans", force: :cascade do |t|
     t.string   "customer"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20151102164801) do
     t.integer  "quantity_in_stock"
     t.integer  "quantity_required"
     t.integer  "user_id"
+    t.text     "completed_at"
   end
 
   add_index "low_stocks", ["user_id"], name: "index_low_stocks_on_user_id"

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Parts on order</h2>
+
+<%= link_to 'Parts outstanding', low_stocks_path, class: "btn btn-primary" %>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Part number</th>
+      <th>Description</th>
+      <th>Quantity requested</th>
+      <th>Date ordered</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @low_stock.each do |low_stock| %>
+        <% if low_stock.completed_at.present? %>
+            <tr>
+              <td><%= low_stock.part_number %></td>
+              <td><%= low_stock.description %></td>
+              <td><%= low_stock.quantity_required %></td>
+              <td><%= low_stock.completed_at %></td>
+            </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
