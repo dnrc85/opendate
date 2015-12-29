@@ -19,6 +19,7 @@ class LowStocksController < ApplicationController
 
   # GET /low_stocks/1/edit
   def edit
+    
   end
 
   # POST /low_stocks
@@ -45,6 +46,7 @@ class LowStocksController < ApplicationController
   # PATCH/PUT /low_stocks/1
   # PATCH/PUT /low_stocks/1.json
   def update
+    
     respond_to do |format|
       if @low_stock.update(low_stock_params)
         format.html { redirect_to low_stocks_path, notice: 'Low stock was successfully updated.' }
@@ -74,6 +76,10 @@ class LowStocksController < ApplicationController
   end
   
   def archived
+    @low_stocks = LowStock.all
+  end  
+  
+  def history
     @low_stocks = LowStock.all
   end  
 

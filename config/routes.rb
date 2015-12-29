@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   get 'low_stocks/ordered' => 'low_stocks#archived'
   
+  get 'low_stocks/history' => 'low_stocks#history'
+  
   resources :low_stocks do
     member do
       patch :complete

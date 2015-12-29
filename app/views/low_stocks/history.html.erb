@@ -1,9 +1,9 @@
-<% @title = "OD Dbase - Low stock parts on order" %>
+<% @title = "OD Dbase - Low stock history" %>
 
 <p id="notice"><%= notice %></p>
 
 <div class = "title-spacing">
-  <h2>Parts on order</h2>
+  <h2>Low stock history</h2>
 </div>
 
 <%= link_to 'Parts outstanding', low_stocks_path, class: "btn btn-primary" %>
@@ -15,17 +15,21 @@
       <th>Description</th>
       <th>Quantity requested</th>
       <th>Date ordered</th>
+      <th>Due date</th>
+      <th>Received</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @low_stock.each do |low_stock| %>
+    <% @low_stocks.each do |low_stock| %>
         <% if low_stock.completed_at.present? %>
             <tr>
-              <td><%= link_to edit_low_stock_path(low_stock), low_stock.part_number %></td>
+              <td><%= low_stock.part_number %></td>
               <td><%= low_stock.description %></td>
               <td><%= low_stock.quantity_required %></td>
-              <td><%= low_stock.completed_at %></td>
+              <td><%= low_stock.updated_at.strftime("%d/%m/%y") %></td>
+              <td><%= low_stock.due_date %></td>
+              <td><%= low_stock.completed_at.to_date.strftime("%d/%m/%y") %></td>
             </tr>
         <% end %>
     <% end %>

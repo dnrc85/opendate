@@ -2,7 +2,9 @@
 
 <p id="notice"><%= notice %></p>
 
-<h3>Order details</h3>
+<div class = "title-spacing">
+    <h2>Order details</h2>
+</div>
 
 <ul class = "list-group">
     <li><strong>Customer:</strong>           <%= @order.customer %>, <%= @order.region %></li>
@@ -16,7 +18,7 @@
 
 <h3>Parts needed for completion</h3>
 
-<%= link_to 'Add a new part', new_order_part_path(@order), class: "btn btn-primary", class: "link_to" %>
+<%= link_to 'Add a new part', new_order_part_path(@order), class: "btn btn-primary" %>
 
 <table class = "table">
     <tr>

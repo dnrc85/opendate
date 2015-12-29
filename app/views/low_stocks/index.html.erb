@@ -1,9 +1,13 @@
+<% @title = "OD Dbase - Low stock" %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Low Stock</h1>
+<div class = "title-spacing">
+  <h2>Low stock</h2>
+</div>
 
 <% if current_user %>
-<%= link_to 'New low stock entry', new_low_stock_path, class: "btn btn-primary" %><%= link_to 'Parts on order', low_stocks_ordered_path, class: "btn btn-primary" %>
+<%= link_to 'New low stock entry', new_low_stock_path, class: "btn btn-primary" %><%= link_to 'Parts on order', low_stocks_ordered_path, class: "btn btn-primary" %><%= link_to 'History', low_stocks_history_path, class: "btn btn-primary" %>
 <% end %>
 
 <table class = "table">
@@ -16,28 +20,29 @@
       <th>Entered By</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @low_stocks.each do |low_stock| %>
-      <% if low_stock.due_date.blank? %>
+      <% if low_stock.due_date.blank? && low_stock.completed_at.blank? %>
         <tr>
           <td><%= low_stock.part_number %></td>
           <td><%= low_stock.description %></td>
           <td><%= low_stock.quantity_in_stock %></td>
           <td><%= low_stock.quantity_required %></td>
           <td><%= low_stock.user.email.chomp("@opendate.co.uk").gsub(".", " ").split(" ")[0].camelize %></td>
-          <% if current_user == low_stock.user %>
-          <td><%= link_to 'Edit', edit_low_stock_path(low_stock), class: "link_to" %></td>
-          <% else %>
-          <td></td>
-          <% end %>
+<% if false %>
+  <% if current_user == low_stock.user %>
+  <td><%= link_to 'Edit', edit_low_stock_path(low_stock), class: "link_to" %></td>
+  <% else %>
+  <td></td>
+  <% end %>
+<% end %>
           <td>
             <%= form_for(low_stock) do |f| %>
-              <%= f.text_field :due_date, :placeholder => "Due date" %>
-              <%= f.submit "Ordered", method: :post %>
+              <%= f.text_field :due_date, :placeholder => "Due date/cancel" %>
+              <%= f.submit "On order", method: :post %>
             <% end %>
           </td>
         </tr>

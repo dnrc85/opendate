@@ -1,6 +1,10 @@
+<% @title = "OD Dbase - Processed parts" %>
+
 <p id="notice"><%= notice %></p>
 
-<h2>Ordered parts</h2>
+<div class = "title-spacing">
+  <h2>Ordered parts</h2>
+</div>
 
 <%= link_to 'Back to outstanding', low_stocks_path, class: "btn btn-primary" %>
 
@@ -14,12 +18,13 @@
       <th>Entered By</th>
       <th>Date Ordered</th>
       <th>Due Date</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @low_stocks.each do |low_stock| %>
-      <% if low_stock.due_date.present? %>
+      <% if low_stock.due_date.present? && low_stock.completed_at.blank? %>
         <tr>
           <td><%= low_stock.part_number %></td>
           <td><%= low_stock.description %></td>
@@ -28,6 +33,7 @@
           <td><%= low_stock.user.email.chomp("@opendate.co.uk").gsub(".", " ").split(" ")[0].camelize %></td>
           <td><%= low_stock.updated_at.strftime("%d/%m/%y") %></td>
           <td><%= low_stock.due_date %></td>
+          <td><%= link_to 'Received', complete_low_stock_path(low_stock), method: :patch, class: "link_to" %></td>
         </tr>
       <% end %>
     <% end %>

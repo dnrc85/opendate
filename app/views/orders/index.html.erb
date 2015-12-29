@@ -2,7 +2,9 @@
 
 <p id="notice"><%= notice %></p>
 
-<h2>Outstanding Orders</h2>
+<div class = "title-spacing">
+  <h2>Outstanding Orders</h2>
+</div>
 
 <%= link_to 'New Order', new_order_path, class: "btn btn-primary" %>
 <%= link_to 'Shipped Orders', orders_archived_path, class: "btn btn-primary" %>
@@ -27,8 +29,8 @@
     <% @orders.each do |order| %>
       <% if order.completed_at.blank? %>
         <tr>
-          <td><%= link_to order.order_number, order, class: "link_to" %></td>
-          <td><%= link_to order.customer, order, class: "link_to" %></td>
+          <td><%= order.order_number %></td>
+          <td><%= order.customer %></td>
           <td><%= order.printer %></td>
           <td><%= order.quantity %></td>
           <td><%= order.status %></td>
