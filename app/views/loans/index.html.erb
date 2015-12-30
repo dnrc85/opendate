@@ -36,7 +36,14 @@
             <td><%= loan.shipped_date %></td>
             <td><%= loan.details %></td>
             <td><%= link_to 'Edit', edit_loan_path(loan), class: "link_to" %></td>
-            <td><%= link_to 'Returned', complete_loan_path(loan), method: :patch, class: "link_to" %></td>
+            
+            <td>
+              <%= form_for(loan) do |f| %>
+                <%= f.text_field :completed_at, :placeholder => "dd/mm/yy" %>
+                <%= f.submit "Returned", method: :post %>
+              <% end %>
+            </td>
+
           </tr>
         <% end %>
       <% end %>

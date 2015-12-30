@@ -18,8 +18,7 @@
       <th>Quantity</th>
       <th>Status</th>
       <th>Order Date</th>
-      <th>Due To Ship Estimate</th>
-      <th>Notes</th>
+      <th>Due Date</th>
       <th></th>
       <th></th>
     </tr>
@@ -36,7 +35,6 @@
           <td><%= order.status %></td>
           <td><%= order.order_date %></td>
           <td><%= order.due_date %></td>
-          <td><%= order.notes %></td>
           <td><%= link_to 'Edit order', edit_order_path(order), class: "link_to" %></td>
           <td><%= link_to 'Shipped', complete_order_path(order), method: :patch, class: "link_to" %></td>
         </tr>

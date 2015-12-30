@@ -32,7 +32,14 @@
           <td><%= treatment.supplier %></td>
           <td><%= treatment.date_sent %></td>
           <td><%= treatment.date_due_back %></td>
-          <td><%= link_to 'Received', complete_treatment_path(treatment), method: :patch, class: "link_to" %></td>
+          
+          <td>
+            <%= form_for(treatment) do |f| %>
+              <%= f.text_field :completed_at, :placeholder => "dd/mm/yy" %>
+              <%= f.submit "Received", method: :post %>
+            <% end %>
+          </td>
+          
         </tr>
       <% end %>
     <% end %>
