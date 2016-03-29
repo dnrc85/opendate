@@ -36,7 +36,14 @@
           <td><%= order.order_date %></td>
           <td><%= order.due_date %></td>
           <td><%= link_to 'Edit order', edit_order_path(order), class: "link_to" %></td>
-          <td><%= link_to 'Shipped', complete_order_path(order), method: :patch, class: "link_to" %></td>
+          
+          <td>
+            <%= form_for(order) do |f| %>
+              <%= f.text_field :completed_at, :placeholder => "dd/mm/yy" %>
+              <%= f.submit "Shipped", method: :post %>
+            <% end %>
+          </td>
+          
         </tr>
       <% end %>
     <% end %>

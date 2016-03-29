@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   get 'region-orders/:region' => 'orders#region', :as => :orders_by_region
   
 
-  root 'home#index'
+  root 'loans#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
